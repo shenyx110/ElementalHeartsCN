@@ -1,0 +1,6 @@
+obj/
+bin/
+*.dll
+*.pdb
+*.bak
+compare_localization.py
