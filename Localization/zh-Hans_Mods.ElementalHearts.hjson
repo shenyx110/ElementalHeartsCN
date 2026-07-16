@@ -1119,7 +1119,7 @@ UI: {
 	CraftedWithStation: 在 {1} 用 {0} 制作
 	CraftedWithAll: 用所有 {0} 心形物品制作
 	CraftedWithAllTier: 在 {1} 用所有 {0} 心形物品制作
-	ShimmeredFrom: {0} 的微光形态
+	ShimmeredFrom: "{0} 的微光形态"
 	AnimateVeils: "{0} 遮蔽了这个 {1}"
 	RequiresMod: 需要 {0} 模组
 	LiteChat1: 要将生命碎片升级到下一个等级，你必须击败活化者。
