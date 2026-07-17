@@ -1,6 +1,6 @@
 displayName = ElementalHearts 元素之心汉化
 name = ElementalHeartsCN
 author = shenyx110
-version = 0.2.8
+version = 0.3.0
 modReferences = ElementalHearts
 translationMod = true

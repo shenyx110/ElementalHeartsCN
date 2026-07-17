@@ -1,4 +1,7 @@
-// RecipeGroups.WoodHearts: Wood Heart
+RecipeGroups: {
+	WoodHearts: 木之心
+	PacifiedHearts: 平息之心
+}
 
 Common: {
 	HpGain: 永久增加最大生命值 {0}
@@ -192,7 +195,6 @@ Configs: {
 
 		Headers: {
 			Difficulty: 难度
-			Challenge: 挑战模式
 			CraftableTiers: 可制作的等级心形物品
 			BossTiers: Boss等级心形物品
 		}
@@ -203,16 +205,6 @@ Configs: {
 				'''
 				你会受到来自所有来源的额外伤害，根据当前世界允许的元素生命值进行缩放：
 				早期大约+3%，到终局时增加到+20%。这使心形物品提供的更大生命值条真正有用。默认启用。
-				'''
-		}
-
-		ChallengeMode: {
-			Label: 挑战模式
-			Tooltip:
-				'''
-				硬核生命值规则。你的最大生命从1开始，生命水晶只给5点（从20降低），
-				因此心形物品成为你增加生命值条的真正途径。作为补偿，每个心形物品给予其配置生命值的两倍。
-				默认禁用。
 				'''
 		}
 
@@ -379,16 +371,6 @@ Configs: {
 			Tooltip: 每个符合条件的夜晚，心形流星落下的百分比几率。
 		}
 
-		HeartShootingStarMaxPerNight: {
-			Label: 每晚最大心形流星数
-			Tooltip: 单个夜晚可以落下的最大心形流星数量。
-		}
-
-		HeartShootingStarFrequency: {
-			Label: 心形流星频率
-			Tooltip: 夜晚激活后流星尝试落下的频率。数值越高落下越频繁。
-		}
-
 		SharedProgression: {
 			Label: 共享进度
 			Tooltip:
@@ -404,11 +386,6 @@ Configs: {
 		}
 
 		Tooltip: 设置心形流星掉落的相关参数。
-
-		HeartShootingStarFalloffMultiplier: {
-			Tooltip: 每击败一个敌人，心形流星掉落的额外几率就会减少该倍数。设置为1则每次击杀都会重置为满额几率。
-			Label: 心形流星衰减倍数
-		}
 	}
 
 	LifeShardSettings: {
@@ -579,6 +556,11 @@ Configs: {
 			Tooltip: 通过快速治疗消耗传说级生命碎片时恢复的生命值。
 		}
 
+		MythicHealAmount: {
+			Label: 神话级碎片治疗量
+			Tooltip: 通过快速治疗消耗神话级生命碎片时恢复的生命值。
+		}
+
 		Tooltip: 生命碎片系统的设置。
 
 		CommonAbilityCost: {
@@ -723,9 +705,27 @@ Configs: {
 			Tooltip: 显示心形物品清单按钮和面板，用于追踪你可以找到或制作的每一个心形物品。
 		}
 
+		AnimateHeartLogOpen: {
+			Label: 心形物品日志开关动画
+			Tooltip:
+				'''
+				心形物品日志像纸卷一样展开和卷起，从按钮中滚出再滚回。
+				关闭后日志会立即打开和关闭。
+				'''
+		}
+
 		ShowDetailedHeartStats: {
 			Label: 显示详细统计栏
 			Tooltip: 在心形物品清单底部显示详细的统计栏（总计和各等级数量）。
+		}
+
+		UseCustomFont: {
+			Label: 使用自定义字体
+			Tooltip:
+				'''
+				使用元素之心的自定义UI字体。
+				关闭后将使用原版风格字体渲染模组UI文本，但保留相同的文字效果。
+				'''
 		}
 
 		EnableElementalHP: {
@@ -737,9 +737,18 @@ Configs: {
 				'''
 		}
 
-		ShowPermanentBuffs: {
-			Label: 显示永久Buff图标
-			Tooltip: 显示由已消耗的药水之心提供的永久效果的Buff图标。
+		RecolorLifeHearts: {
+			Label: 重新着色生命心形
+			Tooltip:
+				'''
+				将你的生命条心形重新着色，以匹配你已消耗的最高等级。
+				关闭以保留原版红色心形。
+				'''
+		}
+
+		HidePermanentBuffs: {
+			Label: 隐藏永久Buff图标
+			Tooltip: 隐藏由消耗的药水之心授予的永久效果的Buff图标。
 		}
 
 		HideImpossibleHearts: {
@@ -751,21 +760,30 @@ Configs: {
 				'''
 		}
 
-		AdvancedNavigation: {
-			Label: 高级导航
+		HideAdvancedNavigation: {
+			Label: 隐藏高级导航
 			Tooltip:
 				'''
-				在心形物品日志的心形物品标签中显示搜索栏、排序和筛选控件。
-				默认关闭以保持面板整洁。
+				隐藏停靠在心形物品日志旁边的搜索、排序和筛选控件，
+				位于主动能力和被动效果标签页上。默认开启以保持日志整洁。
 				'''
 		}
 
-		BulkOptionButtons: {
-			Label: 批量选项按钮
+		HideBulkOptions: {
+			Label: 隐藏批量选项
 			Tooltip:
 				'''
-				在心形物品日志的激活和协同标签中显示全部激活和全部禁用按钮。
-				默认关闭以保持工具栏整洁。
+				隐藏停靠在心形物品日志旁边的全部激活和全部禁用按钮，
+				位于主动能力和协同效果标签页上。默认开启以保持日志整洁。
+				'''
+		}
+
+		DisableHeartLore: {
+			Label: 禁用心形物品背景故事
+			Tooltip:
+				'''
+				隐藏心形物品悬停卡片上的背景故事句子，呈现更简洁的外观。
+				默认开启以保持卡片简短。
 				'''
 		}
 
@@ -1101,6 +1119,8 @@ UI: {
 	PassiveHeartsEffectTip: 在你消耗的心形物品后面留下淡淡的装饰性世界轨迹。
 	DisableCustomUIMusic: 禁用自定义UI音乐
 	DisableCustomUIMusicTip: 在心形物品清单打开时保持世界的正常音乐播放，而不是模组自己的UI主题音乐。
+	DisableHeartLore: 禁用心形物品背景故事
+	DisableHeartLoreTip: 隐藏心形物品悬停卡片上的背景故事句子，呈现更简洁的外观。关闭则显示每个心形物品的背景故事句子。
 	Fuse: 将{0}个{1}熔合成{2}
 	TierCommon: 普通级
 	TierUncommon: 稀有级
@@ -1122,10 +1142,6 @@ UI: {
 	ShimmeredFrom: "{0} 的微光形态"
 	AnimateVeils: "{0} 遮蔽了这个 {1}"
 	RequiresMod: 需要 {0} 模组
-	LiteChat1: 要将生命碎片升级到下一个等级，你必须击败活化者。
-	LiteChat2: 它可以用威胁之心召唤，威胁之心可以在恶魔祭坛用生命碎片和生命水晶制作。
-	LiteChat3: 听说一旦你击败它，它会让你获得更高等级，但它也会变得更强来守护下一等级。
-	LiteChat4: 注意安全！
 
 	AcquisitionTips: {
 		AlchemyHeart: 在重型工作台用所有药水之心制作
@@ -1138,6 +1154,7 @@ UI: {
 		GemcornHeart: 在锯木机用橡果和每种宝石制作
 		BirdHeart: 在烹饪锅用一群鸟制作
 		ReefHeart: 在工作台用珊瑚礁块和贝壳制作
+		# Lucky random-source hearts (RNG-mechanic family)
 		FishHeart: 钓鱼时的稀有战利品，或用鱼制作
 		CandyCornHeart: 从礼物袋中获得的稀有奖品，或用玉米糖制作
 		GingerbreadHeart: 在礼物中稀有发现，或用姜饼制作
@@ -1153,6 +1170,7 @@ UI: {
 		ShiverthornHeart: 稀有出现在药草袋中，或用寒颤棘制作
 		AltarHeart: 从你第一个砸碎的祭坛中必掉，之后是后续祭坛上的稀有奖品
 		FortuneHeart: 在提炼机中从淤泥和雪泥中稀有筛出
+		# Town NPC hearts (bought in the Shop while that NPC lives in your world)
 		GuideHeart: 当向导住在你的世界时从商店购买
 		NurseHeart: 当护士住在你的世界时从商店购买
 		DemolitionistHeart: 当爆破专家住在你的世界时从商店购买
@@ -1181,10 +1199,16 @@ UI: {
 		PrincessHeart: 当公主住在你的世界时从商店购买
 		TaxCollectorHeart: 当税务官住在你的世界时从商店购买
 	}
+
+	LiteChat1: 要将生命碎片升级到下一个等级，你必须击败活化者。
+	LiteChat2: 它可以用威胁之心召唤，威胁之心可以在恶魔祭坛用生命碎片和生命水晶制作。
+	LiteChat3: 听说一旦你击败它，它会让你获得更高等级，但它也会变得更强来守护下一等级。
+	LiteChat4: 注意安全！
 }
 
 # Display-name overrides. Anything not listed auto-generates from the class name.
 Items: {
+	# Lucky random-source hearts (a chance from every RNG mechanic; each also farmable)
 	FishHeart: {
 		DisplayName: 鱼之心
 		Tooltip: ""
@@ -1233,40 +1257,167 @@ Items: {
 		Lore: 机器吐出的大部分是碎石，但偶尔会咳出一个继续铲挖的理由。
 	}
 
-	MerchantHeart: {
-		DisplayName: 商人之心
-		Tooltip: 永久解锁心形物品清单中的商店
-		Lore: 商人不会说他从哪里得到它的，只会告诉你它值多少钱。
+	# Town NPC hearts (sold in the Shop while the NPC lives in your world)
+	GuideHeart: {
+		Tooltip: 主动能力：解锁心形物品清单商店
+		DisplayName: 向导之心
+		Lore: 一个乐于助人的核心，随时准备提供建议，即使有时建议并不那么有用。
 	}
 
-	ShimmerHeart: {
-		DisplayName: 微光之心
-		Tooltip: 永久解锁商店中的碎片页面，在那里生命碎片可以降级
-		Lore: 微光从不摧毁任何东西，它只是礼貌地让物质重新考虑最近的决定。
+	NurseHeart: {
+		Tooltip: 主动能力：缓慢恢复生命
+		DisplayName: 护士之心
+		Lore: 一颗温柔的心跳，散发着治愈的光芒，让周围的伤口慢慢愈合。
 	}
 
-	WarriorSpiritHeart: {
-		DisplayName: 战士之魂之心
-		Tooltip: 在商店中解锁生命之杖
-		Lore: 四件武器争论谁最勇敢，这颗心通过吞下所有四件来解决争端。
+	DemolitionistHeart: {
+		Tooltip: 主动能力：增加爆炸伤害
+		DisplayName: 爆破专家之心
+		Lore: 一颗喜欢爆炸的心脏，每次跳动都可能引发小型爆炸。
 	}
 
-	RangerSpiritHeart: {
-		DisplayName: 射手之魂之心
-		Tooltip: 在商店中解锁碎片弹带
-		Lore: 它更希望你永远不让任何东西靠近到需要它的程度。
+	DyeTraderHeart: {
+		Tooltip: 主动能力：增加物品稀有度显示
+		DisplayName: 染料商之心
+		Lore: 一颗五彩斑斓的心，喜欢给一切染上色彩，包括你的装备。
 	}
 
-	MageSpiritHeart: {
-		DisplayName: 法师之魂之心
-		Tooltip: 在商店中解锁生命之书
-		Lore: 在魔杖和法术书之间的某个地方，它停止阅读文字并开始赋予它们意义。
+	ArmsDealerHeart: {
+		Tooltip: 主动能力：增加弹药掉落
+		DisplayName: 军火商之心
+		Lore: 一颗热爱武器的心脏，总是知道哪里可以找到最好的弹药。
 	}
 
-	SummonerSpiritHeart: {
-		DisplayName: 召唤师之魂之心
-		Tooltip: 在商店中解锁灵魂监督者
-		Lore: 它召唤的东西本来就会来，所以这颗心只是在路上教它们一些礼仪。
+	PainterHeart: {
+		Tooltip: 主动能力：增加绘画速度
+		DisplayName: 画家之心
+		Lore: 一颗充满艺术灵感的心，看到任何空白都会忍不住想要画上几笔。
+	}
+
+	ZoologistHeart: {
+		Tooltip: 主动能力：增加宠物经验值获取速度
+		DisplayName: 动物学家之心
+		Lore: 一颗热爱动物的心，能听懂所有生物的语言，甚至包括史莱姆。
+	}
+
+	GolferHeart: {
+		Tooltip: 主动能力：增加高尔夫球距离
+		DisplayName: 高尔夫球手之心
+		Lore: 一颗完美的高尔夫球心脏，每次挥动都追求完美的弧线。
+	}
+
+	AnglerHeart: {
+		Tooltip: 主动能力：增加钓鱼成功率
+		DisplayName: 渔夫之心
+		Lore: 一颗热爱钓鱼的心，无论天气如何都想坐在水边抛竿。
+	}
+
+	DryadHeart: {
+		Tooltip: 主动能力：增加植物生长速度
+		DisplayName: 树妖之心
+		Lore: 一颗来自森林深处的心，与自然融为一体，能让枯萎的植物重新焕发生机。
+	}
+
+	WitchDoctorHeart: {
+		Tooltip: 主动能力：增加召唤物伤害
+		DisplayName: 巫医之心
+		Lore: 一颗充满魔法力量的心，能与丛林中的灵魂交流。
+	}
+
+	GoblinTinkererHeart: {
+		Tooltip: 主动能力：增加物品重铸效果
+		DisplayName: 哥布林工匠之心
+		Lore: 一颗擅长修理和改造的心，能让破旧的装备焕发新生。
+	}
+
+	StylistHeart: {
+		Tooltip: 主动能力：解锁额外发型
+		DisplayName: 发型师之心
+		Lore: 一颗时尚的心，总是知道最新的发型潮流，即使在地下也不例外。
+	}
+
+	TavernkeepHeart: {
+		Tooltip: 主动能力：增加防御者奖章掉落
+		DisplayName: 酒馆老板之心
+		Lore: 一颗热情好客的心，随时准备为英勇的冒险者提供一杯美酒。
+	}
+
+	ClothierHeart: {
+		Tooltip: 主动能力：增加时装效果
+		DisplayName: 服装商之心
+		Lore: 一颗热爱时尚的心，总是能为你找到最适合的服装搭配。
+	}
+
+	MechanicHeart: {
+		Tooltip: 主动能力：增加机械装置效果
+		DisplayName: 机械师之心
+		Lore: 一颗精密的心，像时钟一样准确，能制造出最复杂的机械装置。
+	}
+
+	PartyGirlHeart: {
+		Tooltip: 主动能力：增加派对效果
+		DisplayName: 派对女孩之心
+		Lore: 一颗永远充满活力的心，随时准备举办一场盛大的派对。
+	}
+
+	WizardHeart: {
+		Tooltip: 主动能力：增加魔力恢复速度
+		DisplayName: 巫师之心
+		Lore: 一颗充满魔力的心，能感受到周围魔法的流动。
+	}
+
+	TaxCollectorHeart: {
+		Tooltip: 主动能力：增加金币收入
+		DisplayName: 税务官之心
+		Lore: 一颗精明的心，总是知道如何最大化利润，即使是从收税中。
+	}
+
+	TruffleHeart: {
+		Tooltip: 主动能力：增加蘑菇生物群系效果
+		DisplayName: 松露人之心
+		Lore: 一颗来自发光蘑菇生物群系的心，散发着淡淡的蘑菇香气。
+	}
+
+	PirateHeart: {
+		Tooltip: 主动能力：增加金币掉落
+		DisplayName: 海盗之心
+		Lore: 一颗热爱冒险和宝藏的心，总是在寻找下一个埋藏财富的地方。
+	}
+
+	SteampunkerHeart: {
+		Tooltip: 主动能力：增加蒸汽装置效果
+		DisplayName: 蒸汽朋克人之心
+		Lore: 一颗充满蒸汽动力的心，带动着齿轮和活塞不断运转。
+	}
+
+	CyborgHeart: {
+		Tooltip: 主动能力：增加机械伤害
+		DisplayName: 赛博格之心
+		Lore: 一颗半机械半有机的心，融合了科技与生物的力量。
+	}
+
+	SantaClausHeart: {
+		Tooltip: 主动能力：增加礼物掉落
+		DisplayName: 圣诞老人之心
+		Lore: 一颗充满节日气息的心，总是在圣诞节给大家带来惊喜。
+	}
+
+	PrincessHeart: {
+		Tooltip: 主动能力：增加NPC幸福度效果
+		DisplayName: 公主之心
+		Lore: 一颗高贵的心，散发着皇室的气息，能让周围的一切变得更加美好。
+	}
+
+	TravellingMerchantHeart: {
+		Tooltip: 主动能力：增加稀有物品掉落
+		DisplayName: 旅行商人之心
+		Lore: 一颗热爱旅行的心，走过无数世界，见过无数稀奇古怪的东西。
+	}
+
+	SkeletonMerchantHeart: {
+		Tooltip: 主动能力：增加骷髅相关物品掉落
+		DisplayName: 骷髅商人之心
+		Lore: 一颗不死的心，即使只剩下骨头也坚持做生意。
 	}
 
 	StickOfLife: {
@@ -1296,568 +1447,10 @@ Items: {
 		Tooltip: 召唤师的法杖，召唤一个灵魂在你身边战斗
 	}
 
-	RottenChunkHeart: {
-		DisplayName: 腐肉之心
-		Tooltip: ""
-		Lore: 世界吞噬者蜕下的一块腐肉，世界礼貌地拒绝收回。
-	}
-
-	VertebraeHeart: {
-		DisplayName: 椎骨之心
-		Tooltip: ""
-		Lore: 猩红脊柱的一个小结，仍在抽搐，坚定地认为自己应该站直。
-	}
-
-	TurtleShellHeart: {
-		DisplayName: 海龟壳之心
-		Tooltip: 主动能力：增加5%伤害减免
-		Lore: 堆叠耐心、贝壳和一种深刻的哲学承诺——让伤害先反弹再投入更多精力。
-	}
-
-	WoodHeart: {
-		DisplayName: 木材之心
-		Tooltip: 在森林中时移动速度增加10%
-		Lore: 一切都从某处开始，这就是你的起点——在野心变得复杂之前，一个坚固的木材结。
-	}
-
-	SunplateHeart: {
-		DisplayName: 日盘之心
-		Tooltip: 在天空中时增加跳跃高度
-		Lore: 由愿意滑翔穿过云层的人从浮空岛打捞，只为那种岛石特有的得意感。
-	}
-
-	SpookyHeart: {
-		DisplayName: 幽灵木之心
-		Tooltip: 在墓地生物群系中时最大召唤物数量增加1
-		Lore: 在南瓜月之夜从早已知道自己将成为哪种树的木材上雕刻而成。
-	}
-
-	SandHeart: {
-		DisplayName: 沙之心
-		Tooltip: 在沙漠中时防御力增加6
-		Lore: 沙漠颗粒承载着干燥的热量和无需努力就能超越周围一切的绝对自信。
-	}
-
-	PearlstoneHeart: {
-		DisplayName: 珍珠岩之心
-		Tooltip: 在神圣之地中时护甲穿透增加5
-		Lore: 神圣石头将整个光明与黑暗的宇宙观看得非常、非常个人化。
-	}
-
-	PalmWoodHeart: {
-		DisplayName: 棕榈木之心
-		Tooltip: 在海洋中时最大魔力值增加20
-		Lore: 海滩木材带着永久度假的心态，在潮汐退去后很久仍以潮汐节奏摇摆。
-	}
-
-	MushroomHeart: {
-		DisplayName: 蘑菇之心
-		Tooltip: 在发光蘑菇生物群系中时挖矿速度增加15%
-		Lore: 海绵状、苍白，在太阳礼貌地拒绝前往的地方茁壮成长。
-	}
-
-	MudHeart: {
-		DisplayName: 泥土之心
-		Tooltip: 在丛林中时伤害增加5%
-		Lore: 丛林地面的真诚奉献——原始、沉重，绝不试图成为任何其他东西。
-	}
-
-	MarbleHeart: {
-		DisplayName: 大理石之心
-		Tooltip: 在大理石洞穴中时减少敌人攻击性
-		Lore: 光滑的石头回响着无人记得委托建造的地下遗迹的壮丽。
-	}
-
-	IceHeart: {
-		DisplayName: 冰之心
-		Tooltip: 在雪地中时受到的伤害减少5%
-		Lore: 完全冻结，在学会无限等待的苔原纯净寂静中跳动。
-	}
-
-	HoneyHeart: {
-		DisplayName: 蜂蜜之心
-		Tooltip: 主动能力：受到伤害时获得5秒蜂蜜增益
-		Lore: 纯粹的丛林花蜜被不放假的蜂巢不懈加班慢煮成一颗心跳。
-	}
-
-	GraniteHeart: {
-		DisplayName: 花岗岩之心
-		Tooltip: 在花岗岩洞穴中时击退增加15%
-		Lore: 从地下短暂决定拥有审美标准的奇怪几何深处凿出。
-	}
-
-	EbonstoneHeart: {
-		DisplayName: 暗影石之心
-		Tooltip: 在腐化之地中时暴击率增加5%
-		Lore: 冰冷的紫色岩石，你一转身就扩散，最终注定成为每个人的问题。
-	}
-
-	CrimstoneHeart: {
-		DisplayName: 猩红石之心
-		Tooltip: 在猩红之地中时生命恢复增加
-		Lore: 来自猩红核心的肉质脉动石头——一块学会了完全错误技巧的岩石。
-	}
-
-	CloudHeart: {
-		DisplayName: 云之心
-		Tooltip: 主动能力：跳跃高度增加10%
-		Lore: 一块有脉搏的无重量天空，测试心脏节律是否真的受重力支配。
-	}
-
-	CactusHeart: {
-		DisplayName: 仙人掌之心
-		Tooltip: 主动能力：收获仙人掌时有25%几率额外掉落仙人掌
-		Lore: 多刺、储水、在阻碍一切的地形中茁壮成长——一颗以心脏形态存在的生存论证。
-	}
-
-	TheGrandThunderBirdHeart: {
-		DisplayName: 宏伟雷鸟之心
-		Tooltip: ""
-		Lore: 在高风中起舞，带着从不曾与重力协商过的平静自信。
-	}
-
-	ViscountHeart: {
-		DisplayName: 子爵之心
-		Tooltip: ""
-		Lore: 一颗渴求其他心脏的心，这很诗意、讽刺、非常切题，而且不再是你的问题。
-	}
-
-	QueenJellyfishHeart: {
-		DisplayName: 水母女王之心
-		Tooltip: ""
-		Lore: 盐雾和无人安排的海滩日气息，表现得像一场现在就开始的永久假期。
-	}
-
-	StarScouterHeart: {
-		DisplayName: 星际侦察员之心
-		Tooltip: ""
-		Lore: 一个合成核心，专门设计用于高效且不带感情地终结事物。
-	}
-
-	TheLichHeart: {
-		DisplayName: 巫妖之心
-		Tooltip: ""
-		Lore: 一个血肉制作的护符匣，以冰冷的确定性跳动——它研究过不死之术并妥善归档。
-	}
-
-	BoreanStriderHeart: {
-		DisplayName: 北风行者之心
-		Tooltip: ""
-		Lore: 从苔原最执着的捕食者身上冻结——全是暴风雪、恶意和绝对的地形自信。
-	}
-
-	ThePrimordialsHeart: {
-		DisplayName: 原初之心
-		Tooltip: ""
-		Lore: 一颗几乎检测不到心跳的石头，把一切都留到成为关键的那一刻。
-	}
-
-	BuriedChampionHeart: {
-		DisplayName: 埋葬冠军之心
-		Tooltip: ""
-		Lore: 锦标赛最后一名站立者的跳动残余——纯粹的拒绝被提炼成某种以胜利跳动的东西。
-	}
-
-	FallenBeholderHeart: {
-		DisplayName: 堕落凝视者之心
-		Tooltip: ""
-		Lore: 一颗血肉之心，带着不安的感觉——在你决定拿起它之前，它就在回望着你。
-	}
-
-	TheForgottenOneHeart: {
-		DisplayName: 遗忘者之心
-		Tooltip: ""
-		Lore: 从阳光放弃事业、压力却没有放弃的地方捞出。
-	}
-
-	LepusHeart: {
-		DisplayName: 复活节兔子之心
-		Tooltip: ""
-		Lore: 粉彩色、季节性，散发着一个绝对在你背包里藏了东西的节日可疑能量。
-	}
-
-	TurkorTheUngratefulHeart: {
-		DisplayName: 忘恩负义的土耳其之心
-		Tooltip: ""
-		Lore: 一张就是不肯停止续杯的桌子的心脏等价物——满载收获，以心脏器官的形式表达。
-	}
-
-	CeaselessVoidHeart: {
-		DisplayName: 无尽虚空之心
-		Tooltip: ""
-		Lore: 一个磁性核心，在两种相反能量之间翻转，并将此视为特性而非明显缺陷。
-	}
-
-	TheLeviathanHeart: {
-		DisplayName: 利维坦之心
-		Tooltip: ""
-		Lore: 开放海洋丰富生命的心脏形态——广阔、欢快，闻起来像你度过的最好的夏天。
-	}
-
-	AstrumDeusHeart: {
-		DisplayName: 星神之心
-		Tooltip: ""
-		Lore: 一个致密的核心，严重扭曲重力，使附近的一切开始悄悄重新考虑当前轨迹。
-	}
-
-	CrabulonHeart: {
-		DisplayName: 蟹菌之心
-		Tooltip: ""
-		Lore: 一个被蘑菇生物群系殖民的发光海绵团，每次跳动都喷出发光孢子作为标点。
-	}
-
-	StormWeaverHeart: {
-		DisplayName: 风暴编织者之心
-		Tooltip: ""
-		Lore: 半植物半机器，自己发电，因为等待别人插电从来不是计划的一部分。
-	}
-
-	YharonHeart: {
-		DisplayName: 亚哈龙之心
-		Tooltip: ""
-		Lore: 从一只仍坚信如果战斗稍微不同就能烤焦你的神话巨龙身上扯下。
-	}
-
-	SignusHeart: {
-		DisplayName: 西格纳斯之心
-		Tooltip: ""
-		Lore: 一个黑暗能量的不稳定球体，将光线从自身弯曲开，原因它宁愿不必解释。
-	}
-
-	RavagerHeart: {
-		DisplayName: 掠夺者之心
-		Tooltip: ""
-		Lore: 一团猩红来源的组织，以对仍然活着深感满意的欢快病态跳动。
-	}
-
-	SupremeCalamitasHeart: {
-		DisplayName: 至尊灾厄之心
-		Tooltip: ""
-		Lore: 一件不稳定的神器，严格按照选择退出的原则分发世界末日的幻象。
-	}
-
-	NamelessDeityHeart: {
-		DisplayName: 无名神之心
-		Tooltip: ""
-		Lore: 如此古老的光与其说是照亮事物，不如说是决定什么能够存在。
-	}
-
-	XG07MarsHeart: {
-		DisplayName: XG-07火星之心
-		Tooltip: ""
-		Lore: 七个原型都有设计缺陷；这个的缺陷是它完美运行。
-	}
-
-	TrojanSquirrelHeart: {
-		DisplayName: 特洛伊松鼠之心
-		Tooltip: ""
-		Lore: 回想起来，决定把一只巨大的木制啮齿动物放进墙壁里的人并没有想清楚。
-	}
-
-	DevianttHeart: {
-		DisplayName: 变异体之心
-		Tooltip: ""
-		Lore: 可爱、粉色，统计上超出你准备范围的几个标准差。
-	}
-
-	AbominationnHeart: {
-		DisplayName: 憎恶之心
-		Tooltip: ""
-		Lore: 有人故意制造了这个，这至今仍是关于它最令人震惊的细节。
-	}
-
-	MutantHeart: {
-		DisplayName: 突变体之心
-		Tooltip: ""
-		Lore: 世界上最强大的东西，目前坐在你的背包里，表现得很奇怪。
-	}
-
-	LifelightHeart: {
-		DisplayName: 生命之光之心
-		Tooltip: ""
-		Lore: 一缕引导之光，显然从未带领任何人去过任何安全的地方。
-	}
-
-	CursedCoffinHeart: {
-		DisplayName: 诅咒棺材之心
-		Tooltip: ""
-		Lore: 从一个附带非常坚定的"别打开"纸条的石棺中撬出。
-	}
-
-	BanishedBaronHeart: {
-		DisplayName: 被放逐的男爵之心
-		Tooltip: ""
-		Lore: 在最深的海沟里，他保留着怨恨、潜水艇和数量不合理的鱼雷。
-	}
-
-	EridanusHeart: {
-		DisplayName: 埃里达努斯之心
-		Tooltip: ""
-		Lore: 容纳一整条星河和一种微弱、蔓延的怀疑——你非常渺小。
-	}
-
-	ChampionOfTimberHeart: {
-		DisplayName: 木材冠军之心
-		Tooltip: ""
-		Lore: 它的每一块碎片都记得曾经是一棵更大、更愤怒的树。
-	}
-
-	ChampionOfTerraHeart: {
-		DisplayName: 大地冠军之心
-		Tooltip: ""
-		Lore: 坚实的地面曾经是一个广受尊重的概念，直到这个东西在它下面定居。
-	}
-
-	AstrumAureusHeart: {
-		DisplayName: 金色星神之心
-		Tooltip: ""
-		Lore: 一颗从一个不认为失败在其工作参数范围内的星生实体中抢救出来的宏伟核心。
-	}
-
-	PolterghastHeart: {
-		DisplayName: 鬼灵之心
-		Tooltip: ""
-		Lore: 密封在一个承受了专门用来击碎决心生存之物的打击的外壳中。
-	}
-
-	AnahitaHeart: {
-		DisplayName: 阿娜希塔之心
-		Tooltip: ""
-		Lore: 一个会流淌纯净清水却永不干涸的结晶器官——收藏中最水润的心。
-	}
-
-	CalamitasCloneHeart: {
-		DisplayName: 灾厄克隆之心
-		Tooltip: ""
-		Lore: 一个悲伤的残余，携带着内部酝酿的变异，它正在专业地管理，一次心跳一次。
-	}
-
 	ShadowScaleHeart: {
 		DisplayName: 暗影鳞片之心
 		Tooltip: ""
 		Lore: 被暗影浸透的节段状器官，来自腐化之地，散发着不安的能量。
-	}
-
-	DaybloomHeart: {
-		DisplayName: 白日花之心
-		Tooltip: ""
-		Lore: 一朵永不凋谢的花朵，在阳光下起舞，在夜晚低语。
-	}
-
-	MoonglowHeart: {
-		DisplayName: 月光草之心
-		Tooltip: ""
-		Lore: 从月光中汲取养分的荧光草本，在黑暗中发出柔和的光芒。
-	}
-
-	BlinkrootHeart: {
-		DisplayName: 闪烁根之心
-		Tooltip: ""
-		Lore: 一根倔强的植物，无视季节和逻辑，随时可能冒出地面。
-	}
-
-	DeathweedHeart: {
-		DisplayName: 死亡草之心
-		Tooltip: ""
-		Lore: 在血月和日食中茁壮成长，带着死亡本身的气息。
-	}
-
-	WaterleafHeart: {
-		DisplayName: 水叶草之心
-		Tooltip: ""
-		Lore: 一朵漂浮在水面上的花朵，随着波浪轻轻摇曳，永不沉没。
-	}
-
-	FireblossomHeart: {
-		DisplayName: 火焰花之心
-		Tooltip: ""
-		Lore: 在岩浆中绽放的花朵，花瓣像火焰一样跳动，永不熄灭。
-	}
-
-	ShiverthornHeart: {
-		DisplayName: 寒颤棘之心
-		Tooltip: ""
-		Lore: 一根冰冷的刺，在雪地中茁壮成长，触碰它会感到刺骨的寒意。
-	}
-
-	GemcornHeart: {
-		DisplayName: 宝石玉米之心
-		Tooltip: ""
-		Lore: 一颗闪耀的玉米，每粒都像宝石一样发光，是大自然最珍贵的馈赠。
-	}
-
-	BirdHeart: {
-		DisplayName: 鸟之心
-		Tooltip: ""
-		Lore: 一群鸟的精华凝聚成一颗心跳，带着自由飞翔的渴望。
-	}
-
-	ReefHeart: {
-		DisplayName: 珊瑚礁之心
-		Tooltip: ""
-		Lore: 从深海珊瑚礁中捞出，散发着咸水和阳光的气息。
-	}
-
-	GuideHeart: {
-		DisplayName: 向导之心
-		Tooltip: 主动能力：解锁心形物品清单商店
-		Lore: 一个乐于助人的核心，随时准备提供建议，即使有时建议并不那么有用。
-	}
-
-	NurseHeart: {
-		DisplayName: 护士之心
-		Tooltip: 主动能力：缓慢恢复生命
-		Lore: 一颗温柔的心跳，散发着治愈的光芒，让周围的伤口慢慢愈合。
-	}
-
-	DemolitionistHeart: {
-		DisplayName: 爆破专家之心
-		Tooltip: 主动能力：增加爆炸伤害
-		Lore: 一颗喜欢爆炸的心脏，每次跳动都可能引发小型爆炸。
-	}
-
-	DyeTraderHeart: {
-		DisplayName: 染料商之心
-		Tooltip: 主动能力：增加物品稀有度显示
-		Lore: 一颗五彩斑斓的心，喜欢给一切染上色彩，包括你的装备。
-	}
-
-	ArmsDealerHeart: {
-		DisplayName: 军火商之心
-		Tooltip: 主动能力：增加弹药掉落
-		Lore: 一颗热爱武器的心脏，总是知道哪里可以找到最好的弹药。
-	}
-
-	PainterHeart: {
-		DisplayName: 画家之心
-		Tooltip: 主动能力：增加绘画速度
-		Lore: 一颗充满艺术灵感的心，看到任何空白都会忍不住想要画上几笔。
-	}
-
-	ZoologistHeart: {
-		DisplayName: 动物学家之心
-		Tooltip: 主动能力：增加宠物经验值获取速度
-		Lore: 一颗热爱动物的心，能听懂所有生物的语言，甚至包括史莱姆。
-	}
-
-	AnglerHeart: {
-		DisplayName: 渔夫之心
-		Tooltip: 主动能力：增加钓鱼成功率
-		Lore: 一颗热爱钓鱼的心，无论天气如何都想坐在水边抛竿。
-	}
-
-	GolferHeart: {
-		DisplayName: 高尔夫球手之心
-		Tooltip: 主动能力：增加高尔夫球距离
-		Lore: 一颗完美的高尔夫球心脏，每次挥动都追求完美的弧线。
-	}
-
-	DryadHeart: {
-		DisplayName: 树妖之心
-		Tooltip: 主动能力：增加植物生长速度
-		Lore: 一颗来自森林深处的心，与自然融为一体，能让枯萎的植物重新焕发生机。
-	}
-
-	WitchDoctorHeart: {
-		DisplayName: 巫医之心
-		Tooltip: 主动能力：增加召唤物伤害
-		Lore: 一颗充满魔法力量的心，能与丛林中的灵魂交流。
-	}
-
-	GoblinTinkererHeart: {
-		DisplayName: 哥布林工匠之心
-		Tooltip: 主动能力：增加物品重铸效果
-		Lore: 一颗擅长修理和改造的心，能让破旧的装备焕发新生。
-	}
-
-	StylistHeart: {
-		DisplayName: 发型师之心
-		Tooltip: 主动能力：解锁额外发型
-		Lore: 一颗时尚的心，总是知道最新的发型潮流，即使在地下也不例外。
-	}
-
-	TavernkeepHeart: {
-		DisplayName: 酒馆老板之心
-		Tooltip: 主动能力：增加防御者奖章掉落
-		Lore: 一颗热情好客的心，随时准备为英勇的冒险者提供一杯美酒。
-	}
-
-	ClothierHeart: {
-		DisplayName: 服装商之心
-		Tooltip: 主动能力：增加时装效果
-		Lore: 一颗热爱时尚的心，总是能为你找到最适合的服装搭配。
-	}
-
-	MechanicHeart: {
-		DisplayName: 机械师之心
-		Tooltip: 主动能力：增加机械装置效果
-		Lore: 一颗精密的心，像时钟一样准确，能制造出最复杂的机械装置。
-	}
-
-	PartyGirlHeart: {
-		DisplayName: 派对女孩之心
-		Tooltip: 主动能力：增加派对效果
-		Lore: 一颗永远充满活力的心，随时准备举办一场盛大的派对。
-	}
-
-	WizardHeart: {
-		DisplayName: 巫师之心
-		Tooltip: 主动能力：增加魔力恢复速度
-		Lore: 一颗充满魔力的心，能感受到周围魔法的流动。
-	}
-
-	PirateHeart: {
-		DisplayName: 海盗之心
-		Tooltip: 主动能力：增加金币掉落
-		Lore: 一颗热爱冒险和宝藏的心，总是在寻找下一个埋藏财富的地方。
-	}
-
-	TruffleHeart: {
-		DisplayName: 松露人之心
-		Tooltip: 主动能力：增加蘑菇生物群系效果
-		Lore: 一颗来自发光蘑菇生物群系的心，散发着淡淡的蘑菇香气。
-	}
-
-	CyborgHeart: {
-		DisplayName: 赛博格之心
-		Tooltip: 主动能力：增加机械伤害
-		Lore: 一颗半机械半有机的心，融合了科技与生物的力量。
-	}
-
-	SteampunkerHeart: {
-		DisplayName: 蒸汽朋克人之心
-		Tooltip: 主动能力：增加蒸汽装置效果
-		Lore: 一颗充满蒸汽动力的心，带动着齿轮和活塞不断运转。
-	}
-
-	SantaClausHeart: {
-		DisplayName: 圣诞老人之心
-		Tooltip: 主动能力：增加礼物掉落
-		Lore: 一颗充满节日气息的心，总是在圣诞节给大家带来惊喜。
-	}
-
-	TravellingMerchantHeart: {
-		DisplayName: 旅行商人之心
-		Tooltip: 主动能力：增加稀有物品掉落
-		Lore: 一颗热爱旅行的心，走过无数世界，见过无数稀奇古怪的东西。
-	}
-
-	SkeletonMerchantHeart: {
-		DisplayName: 骷髅商人之心
-		Tooltip: 主动能力：增加骷髅相关物品掉落
-		Lore: 一颗不死的心，即使只剩下骨头也坚持做生意。
-	}
-
-	PrincessHeart: {
-		DisplayName: 公主之心
-		Tooltip: 主动能力：增加NPC幸福度效果
-		Lore: 一颗高贵的心，散发着皇室的气息，能让周围的一切变得更加美好。
-	}
-
-	TaxCollectorHeart: {
-		DisplayName: 税务官之心
-		Tooltip: 主动能力：增加金币收入
-		Lore: 一颗精明的心，总是知道如何最大化利润，即使是从收税中。
 	}
 
 	TissueSampleHeart: {
@@ -1942,6 +1535,42 @@ Items: {
 		DisplayName: 橡果之心
 		Tooltip: 永久增加25%的树木掉落
 		Lore: 一颗小巧坚固的木质心形物品，随着参天橡树的潜在力量而跳动。它承载着森林底部谦逊而稳固的精华。
+	}
+
+	MerchantHeart: {
+		DisplayName: 商人之心
+		Tooltip: 永久解锁心形物品清单中的商店
+		Lore: 商人不会说他从哪里得到它的，只会告诉你它值多少钱。
+	}
+
+	ShimmerHeart: {
+		DisplayName: 微光之心
+		Tooltip: 永久解锁商店中的碎片页面，在那里生命碎片可以降级
+		Lore: 微光从不摧毁任何东西，它只是礼貌地让物质重新考虑最近的决定。
+	}
+
+	WarriorSpiritHeart: {
+		DisplayName: 战士之魂之心
+		Tooltip: 在商店中解锁生命之杖
+		Lore: 四件武器争论谁最勇敢，这颗心通过吞下所有四件来解决争端。
+	}
+
+	RangerSpiritHeart: {
+		DisplayName: 射手之魂之心
+		Tooltip: 在商店中解锁碎片弹带
+		Lore: 它更希望你永远不让任何东西靠近到需要它的程度。
+	}
+
+	MageSpiritHeart: {
+		DisplayName: 法师之魂之心
+		Tooltip: 在商店中解锁生命之书
+		Lore: 在魔杖和法术书之间的某个地方，它停止阅读文字并开始赋予它们意义。
+	}
+
+	SummonerSpiritHeart: {
+		DisplayName: 召唤师之魂之心
+		Tooltip: 在商店中解锁灵魂监督者
+		Lore: 它召唤的东西本来就会来，所以这颗心只是在路上教它们一些礼仪。
 	}
 
 	BambooHeart: {
@@ -2194,6 +1823,11 @@ Items: {
 		DisplayName: 传说级生命碎片
 	}
 
+	MythicLifeShard: {
+		Tooltip: ""
+		DisplayName: 神话级生命碎片
+	}
+
 	EpicLifeShard: {
 		Tooltip: ""
 		DisplayName: 史诗级生命碎片
@@ -2256,6 +1890,18 @@ Items: {
 		Tooltip: 播放开发者另一款游戏《Neo Telos》的原创音乐
 		DisplayName: 精简之心
 		Lore: 一颗秘密的小点唱机心脏，哼着来自泰拉瑞亚之外某个地方的曲目。
+	}
+
+	NitroplumbicOxofumarateHeart: {
+		DisplayName: 硝基铅氧富马酸酯之心
+		Tooltip: +10%脑部血液营养输送
+		Lore: 微光将一块沉重的铅板煮成了一种过于高级的化合物，它坚持亲手将营养送到你的大脑。
+	}
+
+	SuperdrolHeart: {
+		DisplayName: 超级类固醇之心
+		Tooltip: 永久增加5%伤害但减少5%移动速度
+		Lore: 你将一种合成代谢矿物变成了合成代谢物质。小心你的肝脏。
 	}
 
 	SturdyFossilHeart: {
@@ -2366,10 +2012,10 @@ Items: {
 		Lore: 你没有从库巴兄弟手中救出她，但也许她决定帮助你的原因是她的钥匙看起来像一颗心。
 	}
 
-	WormHeart: {
+	RottenChunkHeart: {
 		Tooltip: ""
-		DisplayName: 蠕虫之心
-		Lore: 一颗从穴居巨兽腹部撕裂的恶心分节心形物品。它跳动着对血肉永不满足的饥饿。
+		DisplayName: 腐肉之心
+		Lore: 世界吞噬者蜕下的一块腐肉，世界礼貌地拒绝收回。
 	}
 
 	SoulOfNightHeart: {
@@ -2528,10 +2174,10 @@ Items: {
 		Lore: 从困难模式祝福的第一层锻造而成，这颗 vivid 蓝色心形物品带来了全新的速度和生命力。它以破碎祭坛的能量闪烁。
 	}
 
-	BrainHeart: {
+	VertebraeHeart: {
 		Tooltip: ""
-		DisplayName: 大脑之心
-		Lore: 一团从克苏鲁之脑中撕裂出来的灰质和筋腱组成的怪异脉动团。它因想要吞噬一切的可怕疯狂智慧而悸动。
+		DisplayName: 椎骨之心
+		Lore: 猩红脊柱的一个小结，仍在抽搐，坚定地认为自己应该站直。
 	}
 
 	AmberHeart: {
@@ -2607,12 +2253,12 @@ Items: {
 	}
 
 	PaladinsHeart: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Active Ability: Unlocks a parry ability
-			Parrying reflects hostile projectiles back as homing attacks
-			Parrying grants brief invincibility, usable once every 15 seconds
-			''' */
+			主动能力：解锁格挡能力
+			格挡可将敌方投射物反弹为追踪攻击
+			格挡提供短暂无敌，每15秒可使用一次
+			'''
 		DisplayName: 圣骑士之心
 		Lore: 地牢职责的金色碎片，脉动着顽固的拒绝，不让任何一颗流浪火花越过盾牌先锋。
 	}
@@ -2693,11 +2339,6 @@ Items: {
 		Tooltip: ""
 		DisplayName: 猪鲨公爵之心
 		Lore: 咸湿的，带着深海愤怒的恶臭。它以变异海洋恐怖的持续能量跳动。
-	}
-
-	DestroyerHeart: {
-		Tooltip: ""
-		DisplayName: 毁灭者之心
 	}
 
 	DeerclopsHeart: {
@@ -2790,10 +2431,10 @@ Items: {
 		Lore: 从蜥蜴神庙崇拜太阳的深处撬出。这颗心脏以温暖、古老的发条滴答声跳动，几个世纪以来见证陷阱捕获粗心的入侵者。它最终认定陷阱是设计缺陷，而你不再在宾客名单上。
 	}
 
-	TurtleHeart: {
-		Tooltip: 永久增加5%伤害减免。
-		DisplayName: 海龟之心
-		Lore: 一颗分层的壳状心脏，带着平静的自信——仿佛已经认定打击是你的问题，不是它的。它缓慢、沉重而自满地跳动，将耐心堆叠成盔甲，直到恐慌无处可站。坚固、顽固，非常乐于让危险先把自己累垮。
+	TurtleShellHeart: {
+		Tooltip: 主动能力：增加5%伤害减免
+		DisplayName: 海龟壳之心
+		Lore: 堆叠耐心、贝壳和一种深刻的哲学承诺——让伤害先反弹再投入更多精力。
 	}
 
 	ChlorophyteHeart: {
@@ -3078,10 +2719,10 @@ Items: {
 		Lore: 一颗冰冷、木质的核心，闻起来有松树和新鲜雪的味道。它以不留情面雪地生物群系坚韧、顽强的精神跳动。
 	}
 
-	ZephyrHeart: {
+	TheGrandThunderBirdHeart: {
 		Tooltip: ""
-		DisplayName: 微风之心
-		Lore: 一颗几乎无重量的心形物品，随高空气流的节奏起舞。它携带着开阔天空的敏捷、无负担自由。
+		DisplayName: 宏伟雷鸟之心
+		Lore: 在高风中起舞，带着从不曾与重力协商过的平静自信。
 	}
 
 	YewWoodHeart: {
@@ -3090,10 +2731,10 @@ Items: {
 		Lore: 一颗从有毒树木雕刻的木质心形物品，以有毒但持久的生命力跳动。它蕴含着古老森林欺骗性、致命的美。
 	}
 
-	VampireHeart: {
+	ViscountHeart: {
 		Tooltip: ""
-		DisplayName: 吸血鬼之心
-		Lore: 一颗不断渴求他人生命精华的暗血红心形物品。它以贪婪、掠食者的节奏跳动，需要养分。
+		DisplayName: 子爵之心
+		Lore: 一颗渴求其他心脏的心，这很诗意、讽刺、非常切题，而且不再是你的问题。
 	}
 
 	ValadiumHeart: {
@@ -3108,10 +2749,10 @@ Items: {
 		Lore: 一颗注入瑟银奇异放射性特性的结晶心形物品。它以缓慢、沉重、独特转化的共鸣跳动。
 	}
 
-	StormHeart: {
+	GraniteEnergyStormHeart: {
 		Tooltip: ""
-		DisplayName: 风暴之心
-		Lore: 一颗劈啪作响、狂暴的心形物品，以狂怒雷暴的愤怒咆哮。它涌动着不稳定的电力和震耳欲聋的雷声。
+		DisplayName: 花岗岩能量风暴之心
+		Lore: 一团积雨云最恶劣的情绪被装进一颗拒绝安定的心形物品——因为安定是卷云的事。
 	}
 
 	SmoothCoalHeart: {
@@ -3120,10 +2761,10 @@ Items: {
 		Lore: 一颗致密、烧焦的心形物品，内部蕴藏着深沉、阴燃的热量。它以长期燃烧燃料的稳定可靠耐力跳动。
 	}
 
-	SeaBreezeHeart: {
+	QueenJellyfishHeart: {
 		Tooltip: ""
-		DisplayName: 海风之心
-		Lore: 一颗轻盈、通风的心形物品，携带着海洋风清新、振奋的气息。它以无忧无虑、解放的能量跳动。
+		DisplayName: 水母女王之心
+		Lore: 盐雾和无人安排的海滩日气息，表现得像一场现在就开始的永久假期。
 	}
 
 	PermafrostHeart: {
@@ -3150,10 +2791,10 @@ Items: {
 		Lore: 一颗吸收光线、散发着复杂、黑暗优雅气场的漆黑心形物品。它以冰冷、算计、无情的精确跳动。
 	}
 
-	OmegaHeart: {
+	StarScouterHeart: {
 		Tooltip: ""
-		DisplayName: 欧米伽之心
-		Lore: 一颗技术先进、以令人畏惧的合成节奏脉动的核心。它拥有末日机械恐怖的毁灭性力量。
+		DisplayName: 星际侦察员之心
+		Lore: 一个合成核心，专门设计用于高效且不带感情地终结事物。
 	}
 
 	MossyMarineRockHeart: {
@@ -3180,10 +2821,10 @@ Items: {
 		Lore: 一颗闪闪发光、半透明的晶体，放大周围的自然生命力。它的节奏跳动与世界本身的心跳同步。
 	}
 
-	LichHeart: {
+	TheLichHeart: {
 		Tooltip: ""
 		DisplayName: 巫妖之心
-		Lore: 一个血肉制作的护符匣，这颗心形物品以冰冷、坏死的亡灵节奏跳动。它拥有永恒、不死存在的黑暗、被禁止的秘密。
+		Lore: 一个血肉制作的护符匣，以冰冷的确定性跳动——它研究过不死之术并妥善归档。
 	}
 
 	IllumiteHeart: {
@@ -3192,16 +2833,16 @@ Items: {
 		Lore: 一颗发光的心形物品，向黑暗中投射出灿烂、舒缓的光芒。它以驱散阴影的和谐、照明能量嗡嗡作响。
 	}
 
-	IceboundStriderHeart: {
+	BoreanStriderHeart: {
 		Tooltip: ""
-		DisplayName: 冰封行者之心
-		Lore: 一颗冻结的结晶心形物品，以残酷暴风雪的刺骨寒意跳动。它蕴含着苔原顶级捕食者的不羁精神。
+		DisplayName: 北风行者之心
+		Lore: 从苔原最执着的捕食者身上冻结——全是暴风雪、恶意和绝对的地形自信。
 	}
 
-	DormantHeart: {
+	ThePrimordialsHeart: {
 		Tooltip: ""
-		DisplayName: 休眠之心
-		Lore: 一颗冰冷、看似无生命的石头，内部隐藏着微弱、几乎察觉不到的心跳。它耐心等待正确的催化剂来唤醒其真正力量。
+		DisplayName: 原初之心
+		Lore: 一颗几乎检测不到心跳的石头，把一切都留到成为关键的那一刻。
 	}
 
 	DepthsRockHeart: {
@@ -3210,10 +2851,10 @@ Items: {
 		Lore: 一颗参差不齐的石质核心，以地下深处的持久、不屈力量跳动。它拥有深洞穴的沉重压迫和沉默坚忍。
 	}
 
-	ChampionHeart: {
+	BuriedChampionHeart: {
 		Tooltip: ""
-		DisplayName: 冠军之心
-		Lore: 一颗由盛大锦标赛胜利者 triumphant 精神锻造的心形物品。它以真正英雄的骄傲和不屈决心跳动。
+		DisplayName: 埋葬冠军之心
+		Lore: 锦标赛最后一名站立者的跳动残余——纯粹的拒绝被提炼成某种以胜利跳动的东西。
 	}
 
 	BrackishClumpHeart: {
@@ -3222,10 +2863,10 @@ Items: {
 		Lore: 一团昏暗、覆满藻类的团块，以停滞水缓慢的生命力跳动。它闻起来有盐和腐烂的味道，却迸发着自然生命力。
 	}
 
-	BeholderHeart: {
+	FallenBeholderHeart: {
 		Tooltip: ""
-		DisplayName: 凝视者之心
-		Lore: 一颗怪异的血肉心形物品，似乎不断以看不见的注视监视着你。它以来自星空之外的混乱、超凡魔法悸动。
+		DisplayName: 堕落凝视者之心
+		Lore: 一颗血肉之心，带着不安的感觉——在你决定拿起它之前，它就在回望着你。
 	}
 
 	AquaiteHeart: {
@@ -3234,10 +2875,10 @@ Items: {
 		Lore: 一颗原始、水润的核心，以恒定、舒缓的液体节奏流动。它反映着水生生命纯粹、未腐化的精华。
 	}
 
-	AbyssalHeart: {
+	TheForgottenOneHeart: {
 		Tooltip: ""
-		DisplayName: 深渊之心
-		Lore: 从压迫深处拖出，这颗心形物品以深渊洋流的缓慢节奏跳动。它拥有深海洋流的沉重压迫。
+		DisplayName: 遗忘者之心
+		Lore: 从阳光放弃事业、压力却没有放弃的地方捞出。
 	}
 
 	SoulOfBlightHeart: {
@@ -3246,10 +2887,10 @@ Items: {
 		Lore: 一颗纯净疾病碎片化的心形物品，以致病、令人作呕的气场跳动。它携带着古老可怕瘟疫的毁灭性枯萎病。
 	}
 
-	EasterHeart: {
+	LepusHeart: {
 		Tooltip: ""
-		DisplayName: 复活节之心
-		Lore: 一颗散发着活力春日欢乐和更新生命力的粉彩色心形物品。它以快乐春日早晨的顽皮能量跳动。
+		DisplayName: 复活节兔子之心
+		Lore: 粉彩色、季节性，散发着一个绝对在你背包里藏了东西的节日可疑能量。
 	}
 
 	CursedHeart: {
@@ -3258,10 +2899,10 @@ Items: {
 		Lore: 被神秘绑带束缚，这颗心形物品以邪恶、恶意的诅咒跳动。握着它就是招致被遗忘、恶意灵魂的愤怒。
 	}
 
-	CornucopiaHeart: {
+	TurkorTheUngratefulHeart: {
 		Tooltip: ""
-		DisplayName: 丰饶角之心
-		Lore: 洋溢着丰富、节日般的能量，这颗心形物品带来绝对富足的感觉。它温暖的嗡嗡声预示着无尽的盛宴和欢乐的庆祝。
+		DisplayName: 忘恩负义的土耳其之心
+		Lore: 一张就是不肯停止续杯的桌子的心脏等价物——满载收获，以心脏器官的形式表达。
 	}
 
 	VoidstoneHeart: {
@@ -3312,22 +2953,22 @@ Items: {
 		Lore: 在深渊的炽热深处锻造，这颗心形物品以强烈的地热跳动。它散发着烫伤不配之人双手的灼热能量。
 	}
 
-	RottenHeart: {
+	ThePerforatorHiveHeart: {
 		Tooltip: ""
-		DisplayName: 腐朽之心
-		Lore: 一团来自腐化的腐烂、发臭血肉团。它微弱地跳动，仅靠邪恶、黑暗魔法维持。
+		DisplayName: 穿孔虫巢穴之心
+		Lore: 一团腐烂的腐败血肉，靠着怨恨、黑暗魔法和日益下降的标准勉强维系在一起。
 	}
 
-	ProfanedHeart: {
+	ProvidenceHeart: {
 		Tooltip: ""
-		DisplayName: 亵渎之心
-		Lore: 一颗被不圣洁火焰腐化的神圣燃烧核心。它命令着可怕的敬畏，散发着神圣但不原谅的光。
+		DisplayName: 普罗维登斯之心
+		Lore: 神圣与诅咒共存于一个令人不适的包裹中——神圣之火先到一步并做了一些重大调整。
 	}
 
-	PolarizedHeart: {
+	CeaselessVoidHeart: {
 		Tooltip: ""
-		DisplayName: 极化之心
-		Lore: 一颗在对立能量之间不断转换的磁性核心。它以不可预测且高度破坏性的力量劈啪作响。
+		DisplayName: 无尽虚空之心
+		Lore: 一个磁性核心，在两种相反能量之间翻转，并将此视为特性而非明显缺陷。
 	}
 
 	PlantyMushHeart: {
@@ -3342,10 +2983,10 @@ Items: {
 		Lore: 一颗翠绿、过度生长的心形物品，每次跳动都会长出新藤蔓。它拥有丛林不可阻挡的再生力量。
 	}
 
-	OceanHeart: {
+	TheLeviathanHeart: {
 		Tooltip: ""
-		DisplayName: 海洋之心
-		Lore: 一颗充满活力、水润的核心，闻起来有盐和夏日微风的气息。它体现了海洋无尽的深度和丰富的生命。
+		DisplayName: 利维坦之心
+		Lore: 开放海洋丰富生命的心脏形态——广阔、欢快，闻起来像你度过的最好的夏天。
 	}
 
 	NovaeSlugHeart: {
@@ -3378,10 +3019,10 @@ Items: {
 		Lore: 一颗在星体撞击强烈热量中锻造的石化宇宙遗物。它充满了宇宙秘密的沉重感。
 	}
 
-	GravistarHeart: {
+	AstrumDeusHeart: {
 		Tooltip: ""
-		DisplayName: 引力星之心
-		Lore: 一颗将一切拉向它的致密、引力扭曲核心。它以垂死恒星无情的节奏跳动。
+		DisplayName: 星神之心
+		Lore: 一个致密的核心，严重扭曲重力，使附近的一切开始悄悄重新考虑当前轨迹。
 	}
 
 	GehennaHeart: {
@@ -3390,10 +3031,10 @@ Items: {
 		Lore: 一颗从地狱最黑暗深渊中拖出的邪恶燃烧遗物。它以该死灵魂痛苦的尖叫无声呐喊。
 	}
 
-	FungalHeart: {
+	CrabulonHeart: {
 		Tooltip: ""
-		DisplayName: 真菌之心
-		Lore: 一团被发光蘑菇生物群系严重感染的海绵发光团块。它每次跳动都会散落一团发光孢子云。
+		DisplayName: 蟹菌之心
+		Lore: 一个被蘑菇生物群系殖民的发光海绵团，每次跳动都喷出发光孢子作为标点。
 	}
 
 	ExodiumClusterHeart: {
@@ -3408,22 +3049,22 @@ Items: {
 		Lore: 一颗在沉没海深处发现的明亮注晶心形物品。它以舒缓的水生宁静跳动。
 	}
 
-	DynamoStemHeart: {
+	StormWeaverHeart: {
 		Tooltip: ""
-		DisplayName: 电机茎之心
-		Lore: 一颗嗡嗡作响带电生命的机械化植物核心。它桥接着自然韧性和技术进步之间的鸿沟。
+		DisplayName: 风暴编织者之心
+		Lore: 半植物半机器，自己发电，因为等待别人插电从来不是计划的一部分。
 	}
 
-	DraconicHeart: {
+	YharonHeart: {
 		Tooltip: ""
-		DisplayName: 龙心
-		Lore: 一颗从神话飞龙残骸中取出的大块鳞片心形物品。它涌动着古老的、龙的不屈力量。
+		DisplayName: 亚哈龙之心
+		Lore: 从一只仍坚信如果战斗稍微不同就能烤焦你的神话巨龙身上扯下。
 	}
 
-	DarkPlasmicHeart: {
+	SignusHeart: {
 		Tooltip: ""
-		DisplayName: 暗质之心
-		Lore: 一颗弯曲周围光线的暗能量不稳定球体。它因渴望释放的混乱阴影力量而扭动。
+		DisplayName: 西格纳斯之心
+		Lore: 一个黑暗能量的不稳定球体，将光线从自身弯曲开，原因它宁愿不必解释。
 	}
 
 	CrystallizedToxicHeart: {
@@ -3450,10 +3091,10 @@ Items: {
 		Lore: 一颗由吞噬诸神的合金锻造的时尚坚不可摧核心。它以令人畏惧的高频共鸣嗡嗡作响。
 	}
 
-	CorpusHeart: {
+	RavagerHeart: {
 		Tooltip: ""
-		DisplayName: 体块之心
-		Lore: 一团可怕的血肉和筋腱组合，以病态生命力跳动。它作为猩红不可阻挡增长的严峻提醒。
+		DisplayName: 掠夺者之心
+		Lore: 一团猩红来源的组织，以对仍然活着深感满意的欢快病态跳动。
 	}
 
 	CinderplateHeart: {
@@ -3468,10 +3109,83 @@ Items: {
 		Lore: 月末启示录支柱留下的严肃遗物。它回响着宇宙怪异的寂静。
 	}
 
-	CalamitousHeart: {
+	SupremeCalamitasHeart: {
 		Tooltip: ""
-		DisplayName: 灾厄之心
-		Lore: 一件由纯粹毁灭和灾难能量诞生的不稳定、可怕遗物。仅是握着它就能带来世界末日的幻象。
+		DisplayName: 至尊灾厄之心
+		Lore: 一件不稳定的神器，严格按照选择退出的原则分发世界末日的幻象。
+	}
+
+	NamelessDeityHeart: {
+		Tooltip: ""
+		DisplayName: 无名神之心
+		Lore: 如此古老的光与其说是照亮事物，不如说是决定什么能够存在。
+	}
+
+	XG07MarsHeart: {
+		Tooltip: ""
+		DisplayName: XG-07火星之心
+		Lore: 七个原型都有设计缺陷；这个的缺陷是它完美运行。
+	}
+
+	# Cross-mod: Fargo's Souls boss hearts
+	TrojanSquirrelHeart: {
+		Tooltip: ""
+		DisplayName: 特洛伊松鼠之心
+		Lore: 回想起来，决定把一只巨大的木制啮齿动物放进墙壁里的人并没有想清楚。
+	}
+
+	DevianttHeart: {
+		Tooltip: ""
+		DisplayName: 变异体之心
+		Lore: 可爱、粉色，统计上超出你准备范围的几个标准差。
+	}
+
+	AbominationnHeart: {
+		Tooltip: ""
+		DisplayName: 憎恶之心
+		Lore: 有人故意制造了这个，这至今仍是关于它最令人震惊的细节。
+	}
+
+	MutantHeart: {
+		Tooltip: ""
+		DisplayName: 突变体之心
+		Lore: 世界上最强大的东西，目前坐在你的背包里，表现得很奇怪。
+	}
+
+	LifelightHeart: {
+		Tooltip: ""
+		DisplayName: 生命之光之心
+		Lore: 一缕引导之光，显然从未带领任何人去过任何安全的地方。
+	}
+
+	CursedCoffinHeart: {
+		Tooltip: ""
+		DisplayName: 诅咒棺材之心
+		Lore: 从一个附带非常坚定的"别打开"纸条的石棺中撬出。
+	}
+
+	BanishedBaronHeart: {
+		Tooltip: ""
+		DisplayName: 被放逐的男爵之心
+		Lore: 在最深的海沟里，他保留着怨恨、潜水艇和数量不合理的鱼雷。
+	}
+
+	EridanusHeart: {
+		Tooltip: ""
+		DisplayName: 埃里达努斯之心
+		Lore: 容纳一整条星河和一种微弱、蔓延的怀疑——你非常渺小。
+	}
+
+	ChampionOfTimberHeart: {
+		Tooltip: ""
+		DisplayName: 木材冠军之心
+		Lore: 它的每一块碎片都记得曾经是一棵更大、更愤怒的树。
+	}
+
+	ChampionOfTerraHeart: {
+		Tooltip: ""
+		DisplayName: 大地冠军之心
+		Lore: 坚实的地面曾经是一个广受尊重的概念，直到这个东西在它下面定居。
 	}
 
 	BrimstoneSlagHeart: {
@@ -3552,22 +3266,22 @@ Items: {
 		Lore: 由陨落星辰的外星土壤塑造，这颗心形物品感觉奇怪柔软却永恒耐用。它回响着宇宙的寂静低语。
 	}
 
-	AstralBossHeart: {
+	AstrumAureusHeart: {
 		Tooltip: ""
-		DisplayName: 星界Boss之心
-		Lore: 从陨落星辰的残骸中提取的神圣核心。它以难以言喻的星体感染冷焰燃烧不息。
+		DisplayName: 金色星神之心
+		Lore: 一颗从一个不认为失败在其工作参数范围内的星生实体中抢救出来的宏伟核心。
 	}
 
-	ArmoredHeart: {
+	PolterghastHeart: {
 		Tooltip: ""
-		DisplayName: 护甲之心
-		Lore: 被不可穿透的金属外壳包裹，它承受了会粉碎普通核心的毁灭性打击。它的节奏撞击像铁锤敲击铁砧。
+		DisplayName: 鬼灵之心
+		Lore: 密封在一个承受了专门用来击碎决心生存之物的打击的外壳中。
 	}
 
-	AquaticHeart: {
+	AnahitaHeart: {
 		Tooltip: ""
-		DisplayName: 水生之心
-		Lore: 一颗不断流淌着纯净清水的水晶器官。握在手中，仿佛能感受到与浩瀚海洋之间那不可分割的联系。
+		DisplayName: 阿娜希塔之心
+		Lore: 一个会流淌纯净清水却永不干涸的结晶器官——收藏中最水润的心。
 	}
 
 	AmbergrisHeart: {
@@ -3576,10 +3290,10 @@ Items: {
 		Lore: 从深海巨兽身上采集的奇异芳香凝块。它蕴含着海洋顶级捕食者那不朽的生命力。
 	}
 
-	AfflictedHeart: {
+	CalamitasCloneHeart: {
 		Tooltip: ""
-		DisplayName: 受难之心
-		Lore: 被可怕的诅咒所污染，这颗悲伤的残片以痛苦的不规则节奏跳动。它病态的光芒预示着内部的毒性变异。
+		DisplayName: 灾厄克隆之心
+		Lore: 一个悲伤的残余，携带着内部酝酿的变异，它正在专业地管理，一次心跳一次。
 	}
 
 	AerialiteHeart: {
@@ -4236,6 +3950,48 @@ Items: {
 		Lore: 全是膝盖、乐观和突然的高度，却没有明显的着陆计划。
 	}
 
+	MouseHeart: {
+		DisplayName: 老鼠之心
+		Tooltip: ""
+		Lore: 被所有更大的东西忽视，却靠着纯粹、不光彩的顽固活过了它们大多数。
+	}
+
+	WormHeart: {
+		DisplayName: 蠕虫之心
+		Tooltip: ""
+		Lore: 一颗从穴居巨兽腹部撕裂的恶心分节心形物品。它跳动着对血肉永不满足的饥饿。
+	}
+
+	LadybugHeart: {
+		DisplayName: 瓢虫之心
+		Tooltip: ""
+		Lore: 一个布满圆点的纯粹自信圆顶，随心所欲地着陆，胆敢让你说它不吉利。
+	}
+
+	DragonflyHeart: {
+		DisplayName: 蜻蜓之心
+		Tooltip: ""
+		Lore: 构造像彩色玻璃直升机，改变方向的决心是它的两倍，而且毫无预警。
+	}
+
+	WaterStriderHeart: {
+		DisplayName: 水黾之心
+		Tooltip: ""
+		Lore: 只要它决定不去想太多，整个池塘瞬间变成坚实的地面。
+	}
+
+	SeahorseHeart: {
+		DisplayName: 海马之心
+		Tooltip: ""
+		Lore: 这是一种由父亲携带孩子的生物，它希望你们其余人都记下来。
+	}
+
+	ButterflyHeart: {
+		DisplayName: 蝴蝶之心
+		Tooltip: ""
+		Lore: 它花了一生时间作为柔软而被遗忘的存在，只为赢得三周难忘的时光。
+	}
+
 	HardenedSandHeart: {
 		DisplayName: 硬化沙之心
 		Tooltip: ""
@@ -4264,6 +4020,84 @@ Items: {
 		DisplayName: 蜗牛之心
 		Tooltip: ""
 		Lore: 以自己的速度移动，带着一种既背着家又带着借口的宁静自信。
+	}
+
+	GoldBunnyHeart: {
+		DisplayName: 金兔子之心
+		Tooltip: ""
+		Lore: 兔子脚一直被认为是幸运的，但没人警告过兔子它会这么值钱。
+	}
+
+	GoldSquirrelHeart: {
+		DisplayName: 金松鼠之心
+		Tooltip: ""
+		Lore: 数十年的强迫囤积，终于得到证明，并被提炼成一个高回报的器官。
+	}
+
+	GoldBirdHeart: {
+		DisplayName: 金鸟之心
+		Tooltip: ""
+		Lore: 喜鹊偷闪亮的东西，但这只鸟直接变成了天空中最闪亮的存在，让金币自己飞来。
+	}
+
+	GoldGoldfishHeart: {
+		DisplayName: 金鱼之心
+		Tooltip: ""
+		Lore: 三秒的记忆和一生的财富搭配得出奇地好。
+	}
+
+	GoldFrogHeart: {
+		DisplayName: 金青蛙之心
+		Tooltip: ""
+		Lore: 亲吻它不会得到王子，只会明显感觉到你的钱包变重了。
+	}
+
+	GoldGrasshopperHeart: {
+		DisplayName: 金蚱蜢之心
+		Tooltip: ""
+		Lore: 寓言警告它要为冬天储蓄，于是出于纯粹的怨恨，它存够了好几个冬天的钱。
+	}
+
+	GoldButterflyHeart: {
+		DisplayName: 金蝴蝶之心
+		Tooltip: ""
+		Lore: 在世界的另一端扇动一次镀金的翅膀，不知怎么地，你的口袋就装满了。
+	}
+
+	GoldDragonflyHeart: {
+		DisplayName: 金蜻蜓之心
+		Tooltip: ""
+		Lore: 不完全是龙，但它继承了家族坐在宝藏堆上的习惯。
+	}
+
+	GoldMouseHeart: {
+		DisplayName: 金老鼠之心
+		Tooltip: ""
+		Lore: 小小的、神经质的，在护壁板后面悄悄掌控着整个地下经济。
+	}
+
+	GoldSeahorseHeart: {
+		DisplayName: 金海马之心
+		Tooltip: ""
+		Lore: 它漂到沉船所在的地方，携带着那些溺水金币悄悄赚取的利息。
+	}
+
+	GoldWaterStriderHeart: {
+		DisplayName: 金水黾之心
+		Tooltip: ""
+		Lore: 它从不打破表面张力，这一点比大多数人的财务状况要好得多。
+	}
+
+	GoldWormHeart: {
+		DisplayName: 金蠕虫之心
+		Tooltip: ""
+		Lore: 被当作诱饵悬挂，被当作财富吞下，价值远超任何愚蠢到咬它的东西。
+	}
+
+	GoldLadybugHeart: {
+		DisplayName: 金瓢虫之心
+		Tooltip: ""
+		Lore: 传统坚持它带来好运，尽管它显然不再含蓄地表达具体数额。
 	}
 
 	SquirrelHeart: {
@@ -4397,6 +4231,12 @@ Items: {
 		DisplayName: 炼金之心
 		Lore: 这种心会读取价格标签，划掉数字，然后在空白处写上更小的数字而不征求许可。
 	}
+
+	WitchcraftHeart: {
+		Tooltip: 采集任何药草都会获得更多
+		DisplayName: 巫术之心
+		Lore: 照料一个无人播种的花园，并原则上拒绝空手从田野归来。
+	}
 }
 
 Tiles: {
@@ -4415,6 +4255,11 @@ WorldGen: {
 }
 
 Buffs: {
+	AnimaOverseerBuff: {
+		DisplayName: 灵魂监督者
+		Description: 被征服的活化者为你而战
+	}
+
 	ServantOfCthulhuBuff: {
 		DisplayName: 克苏鲁之仆
 		Description: 这个仆从将为你而战
@@ -4502,7 +4347,6 @@ NPCs: {
 	EpicAnimateEnforcer.DisplayName: 活化者执行者
 	AnimateHealingPlant.DisplayName: 活化者绽放
 	AnimateTurret.DisplayName: 活化者炮塔
-	LegendaryAnimateEnforcer.DisplayName: 传说级活化者执行者
 
 	BombetteNPC: {
 		DisplayName: Bombette
@@ -4528,6 +4372,8 @@ NPCs: {
 			Princess_LovesNPC: 我喜欢{NPCName}。
 		}
 	}
+
+	LegendaryAnimateEnforcer.DisplayName: 传说级活化者执行者
 }
 
 Projectiles: {
@@ -4568,6 +4414,12 @@ Projectiles: {
 	GauntletSoulBolt.DisplayName: 护手灵魂闪电
 	GauntletWallProjectile.DisplayName: 护手墙壁投射物
 	StampedeHeartProjectile.DisplayName: 奔牛之心投射物
+	StickOfLifeSpear.DisplayName: 生命之杖投射物
+	ShardStrapBoltProjectile.DisplayName: 碎片绑带闪电
+	TetherBeamProjectile.DisplayName: 束缚光束投射物
+	BookOfLifePageProjectile.DisplayName: 生命之书页投射物
+	AnimaMinionProjectile.DisplayName: 灵魂仆从投射物
+	AnimaBoltProjectile.DisplayName: 灵魂闪电
 }
 
 TrackNames: {
@@ -4725,6 +4577,7 @@ Keybinds: {
 	"Toggle Heart Checklist.DisplayName": 切换心形物品清单
 	"Use Discord Ability.DisplayName": 使用 Discord能力
 	Parry.DisplayName: 格挡
+	"Steady Heart.DisplayName": 稳定之心
 }
 
 GameTips: {
